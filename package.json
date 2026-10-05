@@ -1,0 +1,12 @@
+{
+  "name": "job-quest",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Job Quest - full-stack job search and recruitment platform (MERN)",
+  "scripts": {
+    "dev:frontend": "npm --prefix frontend run dev",
+    "dev:backend": "npm --prefix backend run dev",
+    "install:all": "npm --prefix frontend install && npm --prefix backend install",
+    "build:frontend": "npm --prefix frontend run build"
+  }
+}
