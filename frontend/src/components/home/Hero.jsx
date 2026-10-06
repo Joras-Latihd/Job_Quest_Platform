@@ -6,15 +6,12 @@ export default function Hero() {
   const popularSearches = usePopularSearches();
   return (
     <section className="relative isolate overflow-hidden bg-[radial-gradient(circle_at_top_left,_rgba(255,255,255,0.18),_transparent_25%),linear-gradient(135deg,#1d3189_0%,#2748d6_45%,#1b2b6b_100%)] text-white">
-      <div className="absolute inset-0 -z-10 opacity-60">
-        <div className="absolute -left-24 top-10 h-72 w-72 rounded-full bg-accent-400/20 blur-3xl" aria-hidden="true" />
-        <div className="absolute right-0 top-0 h-80 w-80 rounded-full bg-brand-300/10 blur-3xl" aria-hidden="true" />
-        <div className="absolute bottom-0 left-1/3 h-52 w-52 rounded-full bg-white/5 blur-3xl" aria-hidden="true" />
+      <div className="absolute inset-0 -z-10 opacity-80">
+        <div className="absolute -left-24 top-12 h-72 w-72 rounded-full bg-accent-400/15 blur-3xl" aria-hidden="true" />
+        <div className="absolute -right-20 top-0 h-96 w-96 rounded-full bg-brand-300/10 blur-3xl" aria-hidden="true" />
+        <div className="absolute bottom-0 left-1/2 h-56 w-56 -translate-x-1/2 rounded-full bg-white/5 blur-3xl" aria-hidden="true" />
+        <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:34px_34px] [mask-image:radial-gradient(circle_at_center,black,transparent_78%)]" aria-hidden="true" />
       </div>
-
-      <svg className="pointer-events-none absolute inset-x-0 bottom-0 w-full text-brand-950/40" viewBox="0 0 1440 220" preserveAspectRatio="none" aria-hidden="true">
-        <path fill="currentColor" d="M0 220V150l160-80 140 60 200-110 180 120 160-70 220 110 180-90 200 80v50z" />
-      </svg>
 
       <div className="container-page relative pb-24 pt-14 sm:pt-20 lg:pb-28">
         <div className="mx-auto max-w-4xl text-center lg:mx-0 lg:text-left">
