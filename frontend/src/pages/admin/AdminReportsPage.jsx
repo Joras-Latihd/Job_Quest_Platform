@@ -27,7 +27,7 @@ export default function AdminReportsPage() {
     { key: 'actions', header: 'Actions', render: (r) => (
       <div className="flex min-w-0 flex-col items-stretch gap-2 sm:flex-row sm:items-center sm:justify-end">
         {r.job && <Button as={Link} to={`/admin/jobs?search=${encodeURIComponent(r.job.title)}`} variant="ghost" size="sm">Moderate job</Button>}
-        <Select aria-label="Update report status" options={REPORT_STATUSES} value={r.status} onChange={(event) => update.mutate({ id: r._id, status: event.target.value })} className="!h-9 !py-0 text-xs sm:!h-8" wrapperClassName="w-full sm:w-auto" />
+        <Select aria-label="Update report status" options={REPORT_STATUSES} value={r.status} onChange={(event) => update.mutate({ id: r._id, status: event.target.value })} className="!h-9 !py-0 text-xs sm:!h-8" wrapperClassName="w-full min-w-0 sm:w-auto" />
       </div>
     ) },
   ];

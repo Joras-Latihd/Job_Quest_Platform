@@ -43,7 +43,7 @@ export default function NotificationDropdown() {
         <span className="sr-only">Notifications{unreadCount ? `, ${unreadCount} unread` : ''}</span>
       </button>
       {open && (
-        <div className="absolute right-0 z-40 mt-2 w-[22rem] max-w-[calc(100vw-1rem)] overflow-hidden rounded-xl border border-slate-200 bg-white shadow-lg">
+        <div className="absolute left-1/2 z-40 mt-2 w-[22rem] -translate-x-1/2 overflow-hidden rounded-xl border border-slate-200 bg-white shadow-lg sm:right-0 sm:left-auto sm:translate-x-0 max-w-[calc(100vw-1rem)]">
           <div className="flex items-center justify-between gap-3 border-b border-slate-100 px-4 py-3">
             <h2 className="truncate text-sm font-semibold">Notifications</h2>
             {unreadCount > 0 && <button type="button" onClick={() => markAllRead.mutate()} className="shrink-0 text-xs font-medium text-brand-600 hover:underline">Mark all as read</button>}

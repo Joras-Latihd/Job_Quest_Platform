@@ -35,7 +35,7 @@ export default function UserMenu() {
         <span className="sr-only">Open account menu</span>
       </button>
       {open && (
-        <div role="menu" className="absolute right-0 z-40 mt-2 w-60 max-w-[calc(100vw-1rem)] overflow-hidden rounded-xl border border-slate-200 bg-white p-2 shadow-lg">
+        <div role="menu" className="absolute left-1/2 z-40 mt-2 w-60 -translate-x-1/2 overflow-hidden rounded-xl border border-slate-200 bg-white p-2 shadow-lg sm:right-0 sm:left-auto sm:translate-x-0 max-w-[calc(100vw-1rem)]">
           <div className="border-b border-slate-100 px-3 py-2">
             <p className="truncate text-sm font-semibold">{user?.name}</p>
             <p className="truncate text-xs text-slate-500">{user?.email}</p>

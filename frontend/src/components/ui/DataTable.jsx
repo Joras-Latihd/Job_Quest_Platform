@@ -56,9 +56,9 @@ export default function DataTable({ columns, rows = [], isLoading, isError, onRe
         {rows.map((row) => (
           <li key={row._id} className="card min-w-0 space-y-2 p-4 text-sm">
             {columns.map((column) => (
-              <div key={column.key} className="flex items-start justify-between gap-4">
+              <div key={column.key} className="flex min-w-0 items-start justify-between gap-3">
                 <span className="shrink-0 pr-2 text-slate-500">{column.header}</span>
-                <span className="min-w-0 max-w-[60%] break-words text-right">{cell(column, row)}</span>
+                <span className="min-w-0 max-w-[60%] overflow-hidden break-words text-right">{cell(column, row)}</span>
               </div>
             ))}
           </li>
