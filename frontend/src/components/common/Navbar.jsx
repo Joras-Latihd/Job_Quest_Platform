@@ -27,14 +27,14 @@ export default function Navbar() {
     <header className="sticky top-0 z-40 border-b border-slate-200/80 bg-white/90 shadow-[0_1px_0_rgba(15,23,42,0.02),0_10px_30px_-20px_rgba(31,57,174,0.45)] backdrop-blur-xl">
       <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-brand-300/70 to-transparent" aria-hidden="true" />
 
-      <div className="container-page relative flex h-16 items-center justify-between gap-3 sm:h-20 sm:gap-4">
+      <div className="container-page relative flex h-16 items-center justify-between gap-2 sm:h-20 sm:gap-4">
         <Link to="/" aria-label="Job Quest home" className="group shrink-0 rounded-xl p-1.5 transition hover:bg-brand-50"><Logo className="group-hover:scale-[1.02]" /></Link>
 
         <nav aria-label="Main" className="hidden items-center gap-1 rounded-full border border-slate-200/80 bg-slate-50/90 p-1.5 shadow-inner shadow-slate-200/60 lg:flex">
           {PUBLIC_NAV.map((item) => <NavLink key={item.to} to={item.to} end={item.to === '/'} className={linkClass}>{item.label}</NavLink>)}
         </nav>
 
-        <div className="flex min-w-0 items-center justify-end gap-2 sm:gap-3">
+        <div className="flex min-w-0 shrink-0 items-center justify-end gap-2 sm:gap-3">
           {isLoggedIn ? (
             <>
               <Button as={Link} to={ROLE_HOME[user.role]} variant="secondary" size="sm" className="hidden rounded-xl font-semibold shadow-sm shadow-brand-600/10 md:inline-flex">Dashboard</Button>
@@ -48,7 +48,7 @@ export default function Navbar() {
             </div>
           )}
           {canPostJob && <Button as={Link} to={postJobPath} size="sm" className="hidden rounded-xl bg-brand-600 px-4 font-semibold text-white shadow-lg shadow-brand-600/20 hover:-translate-y-0.5 hover:bg-brand-700 hover:shadow-xl hover:shadow-brand-600/25 md:inline-flex">Post a Job</Button>}
-          <button type="button" className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:border-brand-200 hover:bg-brand-50 hover:text-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/30 lg:hidden" onClick={() => setMenuOpen(true)} aria-label="Open menu"><Menu className="h-5 w-5" /></button>
+          <button type="button" className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border border-slate-200 bg-white text-slate-700 shadow-sm transition hover:border-brand-200 hover:bg-brand-50 hover:text-brand-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500/30 active:scale-95 lg:hidden" onClick={() => setMenuOpen(true)} aria-label="Open menu"><Menu className="h-5 w-5" /></button>
         </div>
       </div>
 
