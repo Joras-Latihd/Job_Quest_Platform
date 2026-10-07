@@ -1,7 +1,7 @@
-import { CheckCircle2 } from 'lucide-react';
+import { CheckCircle2, ShieldAlert } from 'lucide-react';
 import Badge from '@/components/ui/Badge';
-import { APPLICATION_METHODS, EDUCATION_LEVELS } from '@/constants';
-import { formatDate, formatExperience, formatLocation, formatSalary, labelFor } from '@/utils/format';
+import { APPLICATION_METHODS } from '@/constants';
+import { labelFor } from '@/utils/format';
 
 function Section({ title, children }) {
   return (
@@ -18,35 +18,39 @@ const BulletList = ({ items }) => (
   </ul>
 );
 
-export default function JobContent({ job }) {
-  const lists = [
-    ['Responsibilities', job.responsibilities], ['Requirements', job.requirements],
-    ['Qualifications', job.qualifications], ['Benefits', job.benefits],
-  ];
+function HowToApply({ job }) {
+  const method = job.applicationMethod || 'PLATFORM';
+  const questions = job.screeningQuestions?.length || 0;
+  return (
+    <Section title="How to apply">
+      <p className="text-sm text-slate-700">{labelFor(APPLICATION_METHODS, method)}.</p>
+      {method === 'PLATFORM' && (
+        <ul className="mt-3 space-y-1.5 text-sm text-slate-600">
+          <li>Have a resume ready (PDF, DOC or DOCX, up to 5 MB). You can upload one while applying.</li>
+          <li>A short cover letter is optional but recommended.</li>
+          {questions > 0 && <li>The employer will ask you {questions} screening question{questions === 1 ? '' : 's'}.</li>}
+          <li>You can track the status of your application from your dashboard.</li>
+        </ul>
+      )}
+      {method === 'EMAIL' && <p className="mt-2 text-sm text-slate-600">Send your resume and a short note to <strong>{job.applicationUrl}</strong>.</p>}
+      {method === 'EXTERNAL' && <p className="mt-2 text-sm text-slate-600">You will be taken to the company website to complete your application.</p>}
+    </Section>
+  );
+}
+
+// onReport is optional (the admin view does not need it).
+export default function JobContent({ job, onReport }) {
+  const lists = [['Responsibilities', job.responsibilities], ['Requirements', job.requirements], ['Qualifications', job.qualifications], ['Benefits', job.benefits]];
   return (
     <div className="space-y-5">
       <Section title="Job description"><p className="whitespace-pre-line text-sm leading-relaxed text-slate-700">{job.description}</p></Section>
       {lists.map(([title, items]) => items?.length > 0 && <Section key={title} title={title}><BulletList items={items} /></Section>)}
-      {job.skills?.length > 0 && (
-        <Section title="Skills">
-          <div className="flex flex-wrap gap-2">{job.skills.map((skill) => <Badge key={skill} tone="blue">{skill}</Badge>)}</div>
-        </Section>
-      )}
-      <Section title="Salary and working location">
-        <dl className="grid gap-3 text-sm sm:grid-cols-2">
-          <div><dt className="text-slate-500">Salary</dt><dd className="font-medium">{formatSalary(job.salary)}{job.salary?.negotiable && job.salary?.min ? ' (negotiable)' : ''}</dd></div>
-          <div><dt className="text-slate-500">Working location</dt><dd className="font-medium">{formatLocation(job.location)}</dd></div>
-        </dl>
-      </Section>
-      <Section title="Application information">
-        <dl className="grid gap-3 text-sm sm:grid-cols-2">
-          <div><dt className="text-slate-500">Vacancies</dt><dd className="font-medium">{job.vacancyCount}</dd></div>
-          <div><dt className="text-slate-500">Deadline</dt><dd className="font-medium">{formatDate(job.deadline)}</dd></div>
-          <div><dt className="text-slate-500">Experience</dt><dd className="font-medium">{formatExperience(job.experience)}</dd></div>
-          <div><dt className="text-slate-500">Minimum education</dt><dd className="font-medium">{labelFor(EDUCATION_LEVELS, job.education)}</dd></div>
-          <div><dt className="text-slate-500">How to apply</dt><dd className="font-medium">{labelFor(APPLICATION_METHODS, job.applicationMethod || 'PLATFORM')}</dd></div>
-        </dl>
-      </Section>
+      {job.skills?.length > 0 && <Section title="Skills"><div className="flex flex-wrap gap-2">{job.skills.map((skill) => <Badge key={skill} tone="blue">{skill}</Badge>)}</div></Section>}
+      <HowToApply job={job} />
+      <div className="flex gap-3 rounded-2xl border border-slate-200 bg-white p-4 text-sm text-slate-600">
+        <ShieldAlert className="mt-0.5 h-5 w-5 shrink-0 text-amber-500" aria-hidden="true" />
+        <p>Stay safe: a real employer never asks you to pay to apply or to share bank or card details. {onReport && <button type="button" onClick={onReport} className="font-medium text-brand-600 hover:underline">Report this job</button>}</p>
+      </div>
     </div>
   );
 }

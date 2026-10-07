@@ -6,17 +6,17 @@ import { jobService } from '@/services/jobService';
 import { formatLocation, formatSalary } from '@/utils/format';
 
 export default function RelatedJobs({ jobId }) {
-  const { data, isLoading } = useQuery({ queryKey: ['jobs', 'related', jobId], queryFn: () => jobService.related(jobId), select: (res) => res.data });
+  const { data, isLoading } = useQuery({ queryKey: ['jobs', 'related', jobId], queryFn: () => jobService.related(jobId), select: (res) => res.data || [], retry: false });
   if (!isLoading && !data?.length) return null;
   return (
     <section className="card p-5" aria-labelledby="related-title">
-      <h2 id="related-title" className="mb-3 font-sans text-base font-semibold">Related jobs</h2>
+      <h2 id="related-title" className="mb-3 font-sans text-base font-semibold">Similar jobs</h2>
       {isLoading ? <div className="space-y-3"><Skeleton className="h-14" /><Skeleton className="h-14" /><Skeleton className="h-14" /></div> : (
         <ul className="space-y-1">
           {data.map((job) => (
             <li key={job._id}>
               <Link to={`/jobs/${job._id}`} className="flex items-center gap-3 rounded-lg p-2 hover:bg-slate-50">
-                <Avatar src={job.company?.logo} name={job.company?.name} size="md" square />
+                <Avatar src={job.company?.logo} name={job.company?.name || 'Company'} size="md" square />
                 <span className="min-w-0">
                   <span className="block truncate text-sm font-medium">{job.title}</span>
                   <span className="block truncate text-xs text-slate-500">{job.company?.name} &middot; {formatLocation(job.location)}</span>
