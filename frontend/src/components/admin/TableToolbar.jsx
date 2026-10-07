@@ -7,9 +7,9 @@ import Select from '@/components/ui/Select';
 export default function TableToolbar({ table, placeholder = 'Search', filters = [] }) {
   return (
     <div className="mb-4 flex flex-col gap-3 sm:flex-row">
-      <Input aria-label={placeholder} leftIcon={Search} placeholder={placeholder} wrapperClassName="flex-1" value={table.search} onChange={(event) => table.setSearch(event.target.value)} />
+      <Input aria-label={placeholder} leftIcon={Search} placeholder={placeholder} wrapperClassName="w-full flex-1" value={table.search} onChange={(event) => table.setSearch(event.target.value)} />
       {filters.map((filter) => (
-        <Select key={filter.key} aria-label={filter.label} placeholder={filter.label} options={filter.options} value={table.filters[filter.key] ?? ''} onChange={(event) => table.setFilter(filter.key, event.target.value)} wrapperClassName="sm:w-48" />
+        <Select key={filter.key} aria-label={filter.label} placeholder={filter.label} options={filter.options} value={table.filters[filter.key] ?? ''} onChange={(event) => table.setFilter(filter.key, event.target.value)} wrapperClassName="w-full sm:w-48" />
       ))}
     </div>
   );

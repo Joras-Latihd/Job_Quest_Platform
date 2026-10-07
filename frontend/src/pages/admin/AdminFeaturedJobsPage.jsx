@@ -30,7 +30,7 @@ export default function AdminFeaturedJobsPage() {
     { key: 'status', header: 'Featured', render: (job) => (job.isFeatured ? <Badge tone="amber">Featured</Badge> : <Badge>Requested</Badge>) },
     { key: 'deadline', header: 'Deadline', render: (job) => formatDate(job.deadline) },
     { key: 'actions', header: 'Actions', render: (job) => (
-      <div className="flex justify-end gap-1">
+      <div className="flex flex-col items-stretch gap-1 sm:flex-row sm:items-center sm:justify-end">
         <Button as={Link} to={`/jobs/${job._id}`} variant="ghost" size="sm">View</Button>
         <Button size="sm" variant={job.isFeatured ? 'outline' : 'primary'} onClick={() => feature.mutate(job)}>{job.isFeatured ? 'Unfeature' : 'Feature'}</Button>
       </div>
@@ -40,8 +40,8 @@ export default function AdminFeaturedJobsPage() {
   return (
     <div>
       <PageHeader title="Featured jobs" description="Featured jobs appear first on the homepage. Employers can request placement; you decide." />
-      <div role="tablist" className="mb-4 inline-flex gap-1 rounded-xl bg-slate-100 p-1">
-        {TABS.map((item) => <button key={item.key} role="tab" aria-selected={tab === item.key} onClick={() => setTab(item.key)} className={cn('rounded-lg px-4 py-1.5 text-sm font-medium', tab === item.key ? 'bg-white shadow-sm' : 'text-slate-600')}>{item.label}</button>)}
+      <div role="tablist" className="mb-4 flex flex-wrap gap-1 rounded-xl bg-slate-100 p-1">
+        {TABS.map((item) => <button key={item.key} role="tab" aria-selected={tab === item.key} onClick={() => setTab(item.key)} className={cn('rounded-lg px-3 py-2 text-sm font-medium sm:px-4', tab === item.key ? 'bg-white shadow-sm' : 'text-slate-600')}>{item.label}</button>)}
       </div>
       <TableToolbar table={table} placeholder="Search jobs" />
       <DataTable columns={columns} rows={table.rows} isLoading={table.isLoading} isError={table.isError} onRetry={table.refetch} emptyTitle={tab === 'featured' ? 'No featured jobs' : 'No feature requests'} />

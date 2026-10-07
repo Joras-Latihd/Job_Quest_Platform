@@ -25,9 +25,9 @@ export default function AdminReportsPage() {
     { key: 'createdAt', header: 'Date', sortable: true, render: (r) => formatDate(r.createdAt) },
     { key: 'status', header: 'Status', render: (r) => <StatusBadge status={r.status} options={REPORT_STATUSES} /> },
     { key: 'actions', header: 'Actions', render: (r) => (
-      <div className="flex flex-wrap items-center justify-end gap-2">
+      <div className="flex min-w-0 flex-col items-stretch gap-2 sm:flex-row sm:items-center sm:justify-end">
         {r.job && <Button as={Link} to={`/admin/jobs?search=${encodeURIComponent(r.job.title)}`} variant="ghost" size="sm">Moderate job</Button>}
-        <Select aria-label="Update report status" options={REPORT_STATUSES} value={r.status} onChange={(event) => update.mutate({ id: r._id, status: event.target.value })} className="!h-8 !py-0 text-xs" />
+        <Select aria-label="Update report status" options={REPORT_STATUSES} value={r.status} onChange={(event) => update.mutate({ id: r._id, status: event.target.value })} className="!h-9 !py-0 text-xs sm:!h-8" wrapperClassName="w-full sm:w-auto" />
       </div>
     ) },
   ];
