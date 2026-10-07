@@ -13,11 +13,11 @@ export default function Hero() {
         <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:34px_34px] [mask-image:radial-gradient(circle_at_center,black,transparent_78%)]" aria-hidden="true" />
       </div>
 
-      <div className="container-page relative pb-24 pt-14 sm:pt-20 lg:pb-28">
+      <div className="container-page relative pb-20 pt-10 sm:pt-16 lg:pb-28">
         <div className="mx-auto max-w-4xl text-center lg:mx-0 lg:text-left">
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-sm font-medium text-brand-50 shadow-lg shadow-brand-950/20 backdrop-blur-sm">
-            <span className="h-2 w-2 rounded-full bg-accent-400 shadow-[0_0_12px_rgba(251,184,60,0.8)]" aria-hidden="true" />
-            Jobs across Kathmandu, Pokhara, Biratnagar and remote
+          <span className="inline-flex max-w-full items-center gap-2 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-medium text-brand-50 shadow-lg shadow-brand-950/20 backdrop-blur-sm sm:text-sm">
+            <span className="h-2 w-2 shrink-0 rounded-full bg-accent-400 shadow-[0_0_12px_rgba(251,184,60,0.8)]" aria-hidden="true" />
+            <span className="truncate">Jobs across Kathmandu, Pokhara, Biratnagar and remote</span>
           </span>
           <h1 className="mt-6 max-w-4xl text-4xl font-bold leading-[1.02] tracking-[-0.03em] text-white sm:text-5xl lg:text-6xl">
             Find your next <span className="text-accent-400">opportunity</span>

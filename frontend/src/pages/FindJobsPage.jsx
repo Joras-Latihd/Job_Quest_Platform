@@ -38,20 +38,20 @@ export default function FindJobsPage() {
         </div>
       </div>
 
-      <div className="container-page grid gap-8 py-8 lg:grid-cols-[18rem_1fr]">
-        <aside className="card hidden h-fit p-5 lg:block" aria-label="Job filters">{sidebar}</aside>
+      <div className="container-page grid min-w-0 gap-8 py-8 lg:grid-cols-[18rem_1fr]">
+        <aside className="card hidden h-fit min-w-0 p-5 lg:block" aria-label="Job filters">{sidebar}</aside>
 
-        <section aria-label="Search results">
-          <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
+        <section className="min-w-0" aria-label="Search results">
+          <div className="mb-4 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <p className="text-sm text-slate-600" aria-live="polite">
               {query.isLoading ? 'Searching...' : <><strong className="text-slate-900">{new Intl.NumberFormat('en-US').format(total || 0)}</strong> {total === 1 ? 'job' : 'jobs'} found</>}
             </p>
-            <div className="flex items-center gap-2">
+            <div className="flex flex-wrap items-center gap-2">
               {activeCount > 0 && <Button variant="ghost" size="sm" onClick={clearFilters}>Clear all filters</Button>}
               <Button variant="outline" size="sm" className="lg:hidden" onClick={() => setDrawerOpen(true)}><SlidersHorizontal className="h-4 w-4" aria-hidden="true" /> Filters{activeCount > 0 ? ` (${activeCount})` : ''}</Button>
-              <label className="flex items-center gap-2 text-sm text-slate-600">
+              <label className="flex min-w-0 items-center gap-2 text-sm text-slate-600">
                 <span className="sr-only sm:not-sr-only">Sort</span>
-                <select value={filters.sort || 'newest'} onChange={(event) => setFilters({ sort: event.target.value })} className="control !w-auto">
+                <select value={filters.sort || 'newest'} onChange={(event) => setFilters({ sort: event.target.value })} className="control !w-auto min-w-[9rem]">
                   {SORT_OPTIONS.map((option) => <option key={option.value} value={option.value}>{option.label}</option>)}
                 </select>
               </label>

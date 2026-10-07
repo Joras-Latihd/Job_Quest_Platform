@@ -20,7 +20,7 @@ export default function RepeatableSection({ control, register, errors, name, tit
       {items.length === 0 && <p className="text-sm text-slate-500">Nothing added yet.</p>}
       <div className="space-y-4">
         {items.map((item, index) => (
-          <div key={item.id} className="rounded-xl border border-slate-200 p-4">
+          <div key={item.id} className="rounded-xl border border-slate-200 p-3 sm:p-4">
             <div className="grid gap-4 sm:grid-cols-2">
               {fields.map((field) => {
                 const path = `${name}.${index}.${field.name}`;
@@ -32,7 +32,7 @@ export default function RepeatableSection({ control, register, errors, name, tit
                 return <Input key={field.name} type={field.type || 'text'} wrapperClassName={wrapperClassName} {...common} />;
               })}
             </div>
-            <Button variant="ghost" size="sm" className="mt-3 text-red-600" onClick={() => remove(index)}><Trash2 className="h-4 w-4" aria-hidden="true" /> Remove</Button>
+            <Button variant="ghost" size="sm" className="mt-3 w-full justify-center text-red-600 sm:w-auto" onClick={() => remove(index)}><Trash2 className="h-4 w-4" aria-hidden="true" /> Remove</Button>
           </div>
         ))}
       </div>

@@ -53,17 +53,17 @@ export default function DashboardShell({ nav, label, variant = 'light' }) {
         <nav aria-label={label}>{links}</nav>
       </Drawer>
 
-      <div className="flex min-h-screen flex-col">
+      <div className="flex min-h-screen min-w-0 flex-col">
         <header className="sticky top-0 z-30 flex h-16 items-center justify-between border-b border-slate-200/80 bg-white/90 px-4 shadow-[0_1px_0_rgba(15,23,42,0.02)] backdrop-blur-xl sm:px-6">
           <button type="button" onClick={() => setDrawerOpen(true)} className="rounded-xl border border-slate-200 bg-white p-2 text-slate-700 shadow-sm transition hover:border-brand-200 hover:bg-brand-50 hover:text-brand-700 lg:hidden" aria-label="Open navigation"><Menu className="h-5 w-5" /></button>
-          <span className="hidden text-sm font-semibold text-slate-500 lg:block">{label}</span>
-          <div className="flex items-center gap-2">
+          <span className="hidden truncate text-sm font-semibold text-slate-500 lg:block">{label}</span>
+          <div className="flex min-w-0 items-center gap-2">
             <Link to="/" className="mr-1 hidden items-center gap-1.5 rounded-lg px-2 py-1.5 text-sm font-medium text-slate-600 transition hover:bg-slate-100 hover:text-slate-900 sm:flex">View site <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" /></Link>
             <NotificationDropdown />
             <UserMenu />
           </div>
         </header>
-        <main className="flex-1 bg-[radial-gradient(circle_at_top_left,_rgba(219,230,255,0.25),_transparent_28%)] p-4 sm:p-6 lg:p-8"><Outlet /></main>
+        <main className="min-w-0 flex-1 bg-[radial-gradient(circle_at_top_left,_rgba(219,230,255,0.25),_transparent_28%)] p-4 sm:p-6 lg:p-8"><Outlet /></main>
       </div>
     </div>
   );

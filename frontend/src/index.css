@@ -5,10 +5,18 @@
 @layer base {
   html { scroll-behavior: smooth; }
   body {
-    @apply bg-[radial-gradient(circle_at_top_left,_rgba(219,230,255,0.45),_transparent_35%),linear-gradient(180deg,#f8fafc_0%,#f1f5f9_100%)] font-sans text-slate-800 antialiased;
+    @apply min-w-0 bg-[radial-gradient(circle_at_top_left,_rgba(219,230,255,0.45),_transparent_35%),linear-gradient(180deg,#f8fafc_0%,#f1f5f9_100%)] font-sans text-slate-800 antialiased;
+    overflow-x: hidden;
   }
+  #root { min-width: 0; }
   h1, h2, h3 { @apply font-display tracking-tight text-slate-900; }
   :focus-visible { @apply outline-none ring-2 ring-brand-500 ring-offset-2; }
+  input, select, textarea, button { font: inherit; }
+  @media (max-width: 767px) {
+    html { -webkit-text-size-adjust: 100%; }
+    body { -webkit-tap-highlight-color: transparent; }
+    input, select, textarea, button { min-height: 44px; }
+  }
   @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
   }

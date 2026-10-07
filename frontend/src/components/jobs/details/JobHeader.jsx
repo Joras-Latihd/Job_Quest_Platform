@@ -43,11 +43,11 @@ export default function JobHeader({ job, onApply, onReport }) {
           </p>
         </div>
       </div>
-      <div className="mt-6 flex flex-wrap items-center gap-2 border-t border-slate-100 pt-5">
+      <div className="mt-6 flex flex-col gap-2 border-t border-slate-100 pt-5 sm:flex-row sm:flex-wrap sm:items-center">
         <ApplyAction job={job} onApply={onApply} />
         <SaveJobButton job={job} withLabel />
         <ShareMenu title={`${job.title} at ${company.name || 'Job Quest'}`} />
-        <Button variant="ghost" onClick={handleReport}><Flag className="h-4 w-4" aria-hidden="true" /> Report</Button>
+        <Button variant="ghost" onClick={handleReport} className="w-full sm:w-auto"><Flag className="h-4 w-4" aria-hidden="true" /> Report</Button>
       </div>
     </section>
   );

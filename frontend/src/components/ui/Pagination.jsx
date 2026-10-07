@@ -18,8 +18,8 @@ export default function Pagination({ pagination, onPageChange }) {
         <ChevronLeft className="h-4 w-4" />
       </button>
       {numbers.map((number, index) => (
-        <span key={number} className="flex items-center gap-1.5">
-          {index > 0 && number - numbers[index - 1] > 1 && <span className="px-1 text-slate-400">...</span>}
+        <span key={number} className="flex items-center gap-1">
+          {index > 0 && number - numbers[index - 1] > 1 && <span className="px-0.5 text-slate-400">…</span>}
           <button
             type="button"
             onClick={() => onPageChange(number)}
