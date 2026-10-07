@@ -7,8 +7,8 @@ const Select = forwardRef(function Select({ label, error, hint, required, option
   const autoId = useId();
   const selectId = id || autoId;
   return (
-    <Field label={label} htmlFor={selectId} error={error} hint={hint} required={required} className={cn('min-w-0', wrapperClassName)}>
-      <select ref={ref} id={selectId} aria-invalid={Boolean(error) || undefined} className={cn('control min-w-0', error && 'control-error', className)} {...props}>
+    <Field label={label} htmlFor={selectId} error={error} hint={hint} required={required} className={cn('min-w-0 max-w-full', wrapperClassName)}>
+      <select ref={ref} id={selectId} aria-invalid={Boolean(error) || undefined} className={cn('control w-full min-w-0 max-w-full', error && 'control-error', className)} {...props}>
         {placeholder !== undefined && <option value="">{placeholder}</option>}
         {options.map((option) => (
           <option key={option.value} value={option.value}>{option.label}</option>
